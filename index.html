@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>Interval Counter</title>
+    <script async src="script/counter.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="counter-chart">
+        <div class="outer">
+          <div class="inner" id="timer"></div>
+        </div>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          width="500px"
+          height="500px"
+        >
+          <circle
+            id="circle"
+            cx="250"
+            cy="250"
+            r="220"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+      <div class="buttons">
+        <button class="start" onclick="start()">Start</button>
+      </div>
+    </main>
+  </body>
+</html>

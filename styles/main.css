@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 15px 25px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+#counter-chart {
+  width: 510px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.outer {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  padding: 70px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-size: 4rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+svg {
+  margin: 5px;
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 60px;
+  stroke-dasharray: 1382;
+}
+
+circle.animated {
+  animation: strokeFill 1s linear forwards;
+}
+
+@keyframes strokeFill {
+  0% {
+    stroke-dashoffset: 1382;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
