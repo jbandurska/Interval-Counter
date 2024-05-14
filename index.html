@@ -3,12 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- css -->
     <link rel="stylesheet" href="styles/main.css" />
-    <title>Interval Counter</title>
+    <link rel="stylesheet" href="styles/chart.css" />
+
+    <!-- javascript -->
     <script async src="script/counter.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Interval Counter</title>
   </head>
   <body>
     <main>
+      <div id="control-panel">
+        <h2 class="header">Interval Counter</h2>
+        <div class="buttons">
+          <button class="type" onclick="start(25 * 60, 5 * 60)">
+            25/5 minutes
+          </button>
+          <button class="type" onclick="start(30, 5)">30/5 seconds</button>
+          <button class="type" onclick="start(60, 5)">60/5 seconds</button>
+        </div>
+      </div>
+
       <div id="counter-chart">
         <div class="outer">
           <div class="inner" id="timer"></div>
@@ -28,9 +52,6 @@
             stroke-linecap="round"
           />
         </svg>
-      </div>
-      <div class="buttons">
-        <button class="start" onclick="start()">Start</button>
       </div>
     </main>
   </body>

@@ -1,12 +1,21 @@
 const circle = document.getElementById("circle");
 const timer = document.getElementById("timer");
+const controlPanelHeader = document.querySelector("#control-panel h2.header");
 
-const INTERVAL = {
-  time: 25 * 60,
-  break: 5 * 60,
+const interval = {
+  work: 0,
+  break: 0,
 };
+let counterIntervalId;
+let displayFnTimeoutId;
 
-function start() {
+function start(w, b) {
+  if (counterIntervalId) clearInterval(counterIntervalId);
+  if (displayFnTimeoutId) clearTimeout(displayFnTimeoutId);
+
+  interval.work = w;
+  interval.break = b;
+
   setCounterInterval();
 }
 
@@ -20,44 +29,40 @@ function resetAnimation(timeout) {
 }
 
 function setCounterInterval() {
-  let type = "time";
-  let timeout = INTERVAL.time;
+  let isWorkTime = true;
+  let timeout = interval.work;
 
-  resetAnimation(timeout);
-  displayTime(timeout);
-
-  const intervalFn = () => {
-    type = type === "time" ? "break" : "time";
-    timeout = type === "time" ? INTERVAL.time : INTERVAL.break;
+  const displayFn = () => {
+    controlPanelHeader.textContent = isWorkTime ? "Work Time" : "Break Time";
 
     resetAnimation(timeout);
     displayTime(timeout);
 
-    setTimeout(() => {
-      intervalFn();
+    displayFnTimeoutId = setTimeout(() => {
+      displayFn();
     }, timeout * 1000);
+
+    isWorkTime = !isWorkTime;
+    timeout = isWorkTime ? interval.work : interval.break;
   };
 
-  setTimeout(() => {
-    intervalFn();
-  }, timeout * 1000);
+  displayFn();
 }
 
 function displayTime(time) {
   let current = time;
 
-  const minutes = Math.floor(current / 60);
-  const seconds = current % 60;
-  timer.textContent = `${minutes}:${seconds > 9 ? seconds : "0" + seconds}`;
-
-  const intervalId = setInterval(() => {
-    current--;
-
+  const displayTimer = () => {
     const minutes = Math.floor(current / 60);
     const seconds = current % 60;
-
     timer.textContent = `${minutes}:${seconds > 9 ? seconds : "0" + seconds}`;
+  };
 
-    if (current <= 1) clearInterval(intervalId);
+  displayTimer();
+
+  counterIntervalId = setInterval(() => {
+    current--;
+    displayTimer();
+    if (current <= 1) clearInterval(counterIntervalId);
   }, 1000);
 }
