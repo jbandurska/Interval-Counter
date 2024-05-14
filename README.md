@@ -16,7 +16,7 @@ You can change the background by simply swapping the background.jpg image for a 
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/jbandurska/Interval-Counter.git
 ```
 
 Open the app by double clicking on `index.html` file.
